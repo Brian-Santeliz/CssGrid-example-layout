@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: #aaa;
+}
+.titulo h1{
+  padding: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.9em;
+}
+.container{
+  width: 90%;
+  max-width: 1000px;
+  margin: 1.6em auto;
+  background: #fff;
+  /* GRID */
+  display: grid;
+  gap:1.6em;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas: "header header header header header"
+                        "main main main sidebar sidebar"
+                        "post post post post post"
+                        "footer footer footer footer footer";
+}
+
+
+
+.container > .header,
+.container > .sidebar,
+.container > .footer,
+.container > .post{
+  background: #fff;
+  padding: 20px;
+  border:1px solid #000;
+}
+
+.container .header,
+.container .footer {
+  background: #1e272e;
+  color:#fff;
+}
+.container .header{
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+}
+.container .header a{
+  text-decoration: none;
+  margin-right: 10px;
+  color:#aaa;
+  font-size: 20px
+}
+.container .header a.activo{
+  color:#fff;
+}
+
+.container .main{
+  grid-area:main;
+
+}
+.container .main > .article{
+  background: #808e9b;
+  padding: 3em;
+  margin-top: 5px;
+  color:#dfe6e9;
+}
+
+.container  .article h1,
+.container  .article p{
+  padding: 10px;
+}
+.container .sidebar{
+  grid-area: sidebar;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  color:#fff;
+  background: #485460;
+
+  /* padding: 10px 0; */
+  /* justify-content: space-around; */
+}
+.container > .post{
+  background: #2d3436;
+  color:#fff;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.container > .post:hover{
+  background: #fff;
+  cursor: pointer;
+  color: #000;
+  transition:  0.5s ease all;
+
+}
+.container .sidebar img{
+  width: 100%;
+  margin-top:5px;
+}
+.container .footer{
+  grid-area:footer;
+}
+
+/* Responsive */
+@media screen and (max-width:768px){
+  .container {
+    grid-template-areas: "header header header header header"
+                          "main main main main main"
+                          "sidebar sidebar sidebar sidebar sidebar"
+                          "post post post post post"
+                          "post post post post post"
+                          "post post post post post"
+                          "post post post post post"
+                          "post post post post post"
+                          "footer footer footer footer footer";
+  }
+  .container .post{
+    grid-column: 1/-1;
+  }
+  /* .container .header h1{
+    text-align: center;
+  } */
+  .container .footer{
+    text-align: center
+  }
+/* .container .footer{
+
+  display: flex;
+  align-content: flex-end;
+} */
+}
+@media screen and (max-width:650px){
+  .container .header{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     text-align: center;
+  }
+  .container .header h1{
+    margin-bottom: .5em;
+  }
+}
