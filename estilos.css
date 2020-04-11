@@ -22,10 +22,11 @@ body{
   display: grid;
   gap:1.6em;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "header header header header header"
+  /* grid-template-areas: "header header header header header"
                         "main main main sidebar sidebar"
                         "post post post post post"
-                        "footer footer footer footer footer";
+                        "footer footer footer footer footer"; */
+
 }
 
 
@@ -45,7 +46,6 @@ body{
   color:#fff;
 }
 .container .header{
-  grid-area: header;
   display: flex;
   justify-content: space-between;
 }
@@ -55,12 +55,13 @@ body{
   color:#aaa;
   font-size: 20px
 }
+.container .header a:hover,
 .container .header a.activo{
   color:#fff;
 }
 
 .container .main{
-  grid-area:main;
+  grid-column: span 3;
 
 }
 .container .main > .article{
@@ -75,11 +76,10 @@ body{
   padding: 10px;
 }
 .container .sidebar{
-  grid-area: sidebar;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  grid-column: span 2;
   flex-direction: column;
   color:#fff;
   background: #485460;
@@ -107,13 +107,14 @@ body{
   width: 100%;
   margin-top:5px;
 }
-.container .footer{
-  grid-area:footer;
+.container .footer,
+.container .header{
+  grid-column: span 5;
 }
 
 /* Responsive */
 @media screen and (max-width:768px){
-  .container {
+  /* .container {
     grid-template-areas: "header header header header header"
                           "main main main main main"
                           "sidebar sidebar sidebar sidebar sidebar"
@@ -123,6 +124,13 @@ body{
                           "post post post post post"
                           "post post post post post"
                           "footer footer footer footer footer";
+  } */
+
+  .container .main{
+    grid-column: 1/-1;
+  }
+  .container .sidebar {
+    grid-column: 1/6;
   }
   .container .post{
     grid-column: 1/-1;
